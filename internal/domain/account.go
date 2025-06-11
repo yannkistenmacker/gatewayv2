@@ -13,7 +13,7 @@ type Account struct {
 	Name      string
 	Email     string
 	APIKey    string
-	Balance   string
+	Balance   float64
 	mu        sync.RWMutex
 	CreatedAt time.Time
 	UpdatedAt time.Time
@@ -30,7 +30,7 @@ func generateAPIKey() string {
 // NewAccount cria uma conta com ID único, API Key segura e timestamps iniciais
 func NewAccount(name, email string) *Account {
 	account := &Account{
-		ID:        uui.New().String(),
+		ID:        uuid.New().String(),
 		Name:      name,
 		Email:     email,
 		Balance:   0,
